@@ -23,14 +23,13 @@ const projectTypes = [
 ];
 
 const materialInterests = [
-  "Solid Wood Doors",
-  "Natural Stone Veneer",
-  "Charcoal Louvers",
-  "Laminate with MDF Press",
-  "3D Layered Wall Art",
-  "Pre-Laminated Board",
-  "WPC / PVC Doors",
-  "Solid Wood Swings",
+  "Doors",
+  "Stone Slice",
+  "Laminates (Winston)",
+  "Wall Decorative",
+  "Panels",
+  "WPC Century",
+  "Digital Locks",
 ];
 
 const fieldClass =

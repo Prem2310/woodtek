@@ -6,17 +6,18 @@ import { Tag, Eyebrow, Reveal, ClipReveal } from "./primitives";
 import { cn } from "@/lib/utils";
 
 /**
- * Gallery tile slots shown on every product. Span/aspect rhythm matches
- * spanFor() above so the gallery reads as the same grid system as the
- * collection index. Caption defaults to a neutral "Image 0N" — it's only
- * a placeholder label, not a claim about content, until a product supplies
- * real photos with real captions via item.galleryCaptions.
+ * Gallery tile slots shown on every product. All four tiles are the same
+ * portrait aspect so mixed portrait/landscape source photos crop to a
+ * uniform grid instead of alternating sizes. Caption defaults to a neutral
+ * "Image 0N" — it's only a placeholder label, not a claim about content,
+ * until a product supplies real photos with real captions via
+ * item.galleryCaptions.
  */
 const gallerySlots = [
-  { span: "md:col-span-7", aspect: "aspect-[4/3]" },
-  { span: "md:col-span-5", aspect: "aspect-[3/4]" },
-  { span: "md:col-span-5", aspect: "aspect-[3/4]" },
-  { span: "md:col-span-7", aspect: "aspect-[4/3]" },
+  { span: "md:col-span-6", aspect: "aspect-[3/4]" },
+  { span: "md:col-span-6", aspect: "aspect-[3/4]" },
+  { span: "md:col-span-6", aspect: "aspect-[3/4]" },
+  { span: "md:col-span-6", aspect: "aspect-[3/4]" },
 ] as const;
 
 const spanFor = (scale: Collection["scale"]) =>
@@ -197,7 +198,7 @@ export function CollectionModal({
                 const src = item.gallery?.[i];
                 const caption = item.galleryCaptions?.[i] ?? `Image ${String(i + 1).padStart(2, "0")}`;
                 return (
-                  <figure key={i} className={cn("group", slot.span, i % 2 === 1 ? "md:mt-16" : "")}>
+                  <figure key={i} className={cn("group", slot.span)}>
                     <ClipReveal delay={i * 0.1} className={cn("grain relative bg-bone", slot.aspect)}>
                       {src ? (
                         <img
