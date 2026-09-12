@@ -13,8 +13,12 @@ export default defineConfig({
     server: { entry: "server" },
     // Every route is static content (no loaders/server functions), so render
     // all pages to HTML at build time instead of on each request.
+    // Disabled on Netlify: its Nitro preset writes the server to
+    // .netlify/functions-internal/server/, a location the Lovable plugin's
+    // prerender preview-shim doesn't recognize (it only finds .output/server
+    // or dist/server), so prerendering there crashes the whole build.
     prerender: {
-      enabled: true,
+      enabled: !process.env.NETLIFY,
       crawlLinks: true,
     },
   },
