@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 const title = "Collections — WOODTEK Architectural Materials";
 const description =
-  "Eight Woodtek collections: solid wood doors, natural stone veneer, charcoal louvers, laminate panels, layered wall art, pre-laminated board, WPC doors and handmade swings.";
+  "Seven Woodtek collections: Doors, Stone Slice, Laminates (Winston), Wall Decorative, Panels, WPC Century and Digital Locks.";
 
 export const Route = createFileRoute("/collections")({
   head: () => ({
@@ -31,10 +31,9 @@ const groupOf: Record<string, string> = {
   "wpc-pvc-doors": "Doors",
   "natural-stone-veneer": "Surfaces",
   "laminate-mdf-press": "Surfaces",
-  "charcoal-louvers": "Panels",
   "layered-wall-art": "Panels",
-  "pre-laminated-particle-board": "Surfaces",
-  "solid-wood-swings": "Objects",
+  "acoustic-wall-panels": "Panels",
+  "digital-locks": "Objects",
 };
 
 function CollectionsPage() {
@@ -47,8 +46,8 @@ function CollectionsPage() {
       <PageHeader
         eyebrow="The Collection"
         title="Materials selected for spaces with character."
-        intro="Eight collections, each made to order and detailed against the drawing. Select any collection to see its full specification."
-        meta="08 Collections / Made to order"
+        intro="Seven collections, each made to order and detailed against the drawing. Select any collection to see its full specification."
+        meta="07 Collections / Made to order"
       />
 
       <Section className="bg-ivory">
