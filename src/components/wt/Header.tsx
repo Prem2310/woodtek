@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
+import mark from "@/assets/woodtek-mark.png";
+import markReverse from "@/assets/woodtek-mark-reverse.png";
 import wordmark from "@/assets/woodtek-wordmark.png";
 
 export function Header() {
@@ -42,14 +44,25 @@ export function Header() {
         )}
       >
         <div className="mx-auto grid h-[76px] max-w-[1600px] grid-cols-[minmax(0,1fr)_auto] items-center gap-6 px-6 md:px-10 lg:px-16">
-          <Link to="/" aria-label="WOODTEK home" className="min-w-0 shrink-0">
+          <Link
+            to="/"
+            aria-label="WOODTEK home"
+            className="flex min-w-0 shrink-0 items-center gap-2"
+          >
+            <img
+              src={inverse ? markReverse : mark}
+              alt=""
+              width={940}
+              height={604}
+              className="h-8 w-auto transition-all duration-500 md:h-10"
+            />
             <img
               src={wordmark}
               alt="WOODTEK"
-              width={165}
-              height={26}
+              width={1238}
+              height={224}
               className={cn(
-                "h-[18px] w-auto transition-all duration-500 md:h-[22px]",
+                "h-5 w-auto transition-all duration-500 md:h-6",
                 inverse ? "brightness-0 invert" : "",
               )}
             />
@@ -115,13 +128,16 @@ export function Header() {
             className="fixed inset-0 z-[60] bg-forest-950 px-6 py-6 text-ivory"
           >
             <div className="flex items-center justify-between">
-              <img
-                src={wordmark}
-                alt="WOODTEK"
-                width={165}
-                height={26}
-                className="h-[18px] w-auto brightness-0 invert"
-              />
+              <div className="flex items-center gap-2">
+                <img src={markReverse} alt="" width={940} height={604} className="h-8 w-auto" />
+                <img
+                  src={wordmark}
+                  alt="WOODTEK"
+                  width={1238}
+                  height={224}
+                  className="h-5 w-auto brightness-0 invert"
+                />
+              </div>
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"

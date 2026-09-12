@@ -1,4 +1,8 @@
 import doors from "@/assets/mat-doors.jpg";
+import doorsGallery1 from "@/assets/Collection/Doors/01.png";
+import doorsGallery2 from "@/assets/Collection/Doors/02.png";
+import doorsGallery3 from "@/assets/Collection/Doors/03.png";
+import doorsGallery4 from "@/assets/Collection/Doors/04.png";
 import stone from "@/assets/mat-stone.jpg";
 import louver from "@/assets/mat-louver.jpg";
 import laminate from "@/assets/mat-laminate.jpg";
@@ -20,6 +24,10 @@ export type Collection = {
   applications: string[];
   customisation: string;
   scale: "tall" | "wide" | "square";
+  /** Optional detail/texture/installed shots for the product gallery. */
+  gallery?: string[];
+  /** Optional captions for `gallery`, aligned by index. Falls back to generic labels. */
+  galleryCaptions?: string[];
 };
 
 export const collections: Collection[] = [
@@ -27,15 +35,18 @@ export const collections: Collection[] = [
     id: "solid-wood-doors",
     index: "01",
     title: "Solid Wood Doors",
-    short: "Natural solid wood entrance doors",
+    short: "3D carved solid wood doors with integrated smart lock",
     description:
-      "Entrance doors cut from seasoned hardwood and finished by hand. Each leaf is built to the opening it will stand in, with grooves, panelling and hardware detailed to the drawing.",
+      "A collection of ten 3D carved solid wood entrance doors — WMD 2 through WMD 10 — each fine-sanded, sealer-coated and finished by hand over a waterproof flush-door core. Every door is built with an integrated smart lock: fingerprint, PIN code, RFID card, mobile app and a built-in video doorbell, fully customised to the opening.",
     image: doors,
-    material: "Natural solid wood",
-    format: "Made to opening",
-    finishes: ["Natural", "Teak", "Walnut"],
-    applications: ["Modern", "Heritage", "Contemporary", "Geometric", "Custom carved"],
-    customisation: "Species, groove pattern, carving, hardware and finish specified per project.",
+    gallery: [doorsGallery1, doorsGallery2, doorsGallery3, doorsGallery4],
+    galleryCaptions: ["Design 01", "Design 02", "Design 03", "Design 04"],
+    material: "Solid wood over a 30 mm waterproof flush-door core",
+    format: "40–70 mm overall thickness / fully custom size",
+    finishes: ["Natural", "Stained", "Teak Wood", "Walnut Wood", "Dark Oak"],
+    applications: ["Main entrance doors", "Smart entry doors", "3D carved feature doors"],
+    customisation:
+      "10 carved design models (WMD 2 – WMD 10), thickness, size, wood finish and integrated smart lock specified per project.",
     scale: "tall",
   },
   {

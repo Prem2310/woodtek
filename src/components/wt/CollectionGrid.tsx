@@ -2,8 +2,22 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { collections, type Collection } from "@/data/collections";
-import { Tag } from "./primitives";
+import { Tag, Eyebrow, Reveal, ClipReveal } from "./primitives";
 import { cn } from "@/lib/utils";
+
+/**
+ * Gallery tile slots shown on every product. Span/aspect rhythm matches
+ * spanFor() above so the gallery reads as the same grid system as the
+ * collection index. Caption defaults to a neutral "Image 0N" — it's only
+ * a placeholder label, not a claim about content, until a product supplies
+ * real photos with real captions via item.galleryCaptions.
+ */
+const gallerySlots = [
+  { span: "md:col-span-7", aspect: "aspect-[4/3]" },
+  { span: "md:col-span-5", aspect: "aspect-[3/4]" },
+  { span: "md:col-span-5", aspect: "aspect-[3/4]" },
+  { span: "md:col-span-7", aspect: "aspect-[4/3]" },
+] as const;
 
 const spanFor = (scale: Collection["scale"]) =>
   scale === "wide"
@@ -165,6 +179,45 @@ export function CollectionModal({
                 Enquire about this
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Link>
+            </div>
+          </div>
+
+          <div className="border-t border-ink/10 bg-ivory px-6 py-20 md:px-10 md:py-28 lg:px-16">
+            <Reveal>
+              <Eyebrow>Gallery</Eyebrow>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <h3 className="mt-6 max-w-xl font-display text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.08] font-light tracking-[-0.02em] text-forest-900">
+                Every surface, seen closer.
+              </h3>
+            </Reveal>
+
+            <div className="mx-auto mt-14 grid max-w-[1600px] grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-12">
+              {gallerySlots.map((slot, i) => {
+                const src = item.gallery?.[i];
+                const caption = item.galleryCaptions?.[i] ?? `Image ${String(i + 1).padStart(2, "0")}`;
+                return (
+                  <figure key={i} className={cn("group", slot.span, i % 2 === 1 ? "md:mt-16" : "")}>
+                    <ClipReveal delay={i * 0.1} className={cn("grain relative bg-bone", slot.aspect)}>
+                      {src ? (
+                        <img
+                          src={src}
+                          alt={`${item.title} — ${caption.toLowerCase()}`}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-[1.05]"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center transition-colors duration-500 group-hover:bg-sand/30">
+                          <span className="spec text-[10px] text-ash/70">Image pending</span>
+                        </div>
+                      )}
+                    </ClipReveal>
+                    <figcaption className="spec mt-4 text-[10px] text-ash">
+                      Fig. {item.index}.{i + 1} — {caption}
+                    </figcaption>
+                  </figure>
+                );
+              })}
             </div>
           </div>
         </motion.div>

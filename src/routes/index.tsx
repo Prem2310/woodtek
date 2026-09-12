@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Hero } from "@/components/wt/Hero";
 import { Loader } from "@/components/wt/Loader";
 import { Marquee } from "@/components/wt/Marquee";
-import { MaterialLab } from "@/components/wt/MaterialLab";
 import { CraftTimeline } from "@/components/wt/CraftTimeline";
 import { FeatureProject } from "@/components/wt/FeatureProject";
 import { CollectionGrid } from "@/components/wt/CollectionGrid";
@@ -77,33 +76,7 @@ function Index() {
             </Reveal>
           </div>
 
-          <div className="relative">
-            <ClipReveal>
-              <div className="grain aspect-[4/5]">
-                <img
-                  src={wood}
-                  alt="Macro detail of natural teak grain"
-                  width={1200}
-                  height={1500}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </ClipReveal>
-            <div
-              className="absolute -left-6 top-0 hidden h-full w-px bg-ink/10 lg:block"
-              aria-hidden="true"
-            >
-              {[0, 25, 50, 75, 100].map((t) => (
-                <span
-                  key={t}
-                  className="absolute -left-2 h-px w-4 bg-ink/20"
-                  style={{ top: `${t}%` }}
-                />
-              ))}
-            </div>
-            <p className="spec mt-5 text-[10px] text-ash">Fig. 01 — Teak, quarter sawn</p>
-          </div>
+
         </div>
       </Section>
 
@@ -122,8 +95,6 @@ function Index() {
         </div>
         <CollectionGrid items={collections.slice(0, 4)} />
       </Section>
-
-      <MaterialLab />
 
       {/* Selected spaces */}
       <Section className="bg-ivory">
@@ -161,11 +132,11 @@ function Index() {
                 Send an enquiry
               </ButtonLink>
               <Link
-                to="/materials"
+                to="/collections"
                 data-cursor="link"
                 className="eyebrow link-underline text-[10px] text-ivory/60"
               >
-                Or browse the material library
+                Or browse the collection
               </Link>
             </div>
           </Reveal>

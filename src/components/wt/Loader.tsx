@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+import markReverse from "@/assets/woodtek-mark-reverse.png";
 import wordmark from "@/assets/woodtek-wordmark.png";
 
 const KEY = "woodtek-entered";
@@ -31,17 +32,22 @@ export function Loader() {
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 1, ease: [0.65, 0, 0.35, 1] }}
         >
-          <motion.img
-            src={wordmark}
-            alt="WOODTEK"
-            width={165}
-            height={26}
+          <motion.div
+            className="flex items-center gap-4"
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ y: -28, opacity: 0 }}
             transition={{ duration: 1.4, ease: [0.16, 0.84, 0.44, 1] }}
-            className="h-6 w-auto brightness-0 invert md:h-8"
-          />
+          >
+            <img src={markReverse} alt="" width={940} height={604} className="h-16 w-auto md:h-20" />
+            <img
+              src={wordmark}
+              alt="WOODTEK"
+              width={1238}
+              height={224}
+              className="h-10 w-auto brightness-0 invert md:h-12"
+            />
+          </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

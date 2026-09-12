@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { site } from "@/data/site";
 import { collections } from "@/data/collections";
-import logoReverse from "@/assets/woodtek-logo-full-reverse.png";
+import markReverse from "@/assets/woodtek-mark-reverse.png";
+import wordmark from "@/assets/woodtek-wordmark.png";
 
 export function Footer() {
   return (
@@ -9,14 +10,24 @@ export function Footer() {
       <div className="mx-auto max-w-[1600px]">
         <div className="grid gap-16 border-b border-ivory/12 pb-20 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
-            <img
-              src={logoReverse}
-              alt="WOODTEK"
-              width={220}
-              height={80}
-              loading="lazy"
-              className="h-14 w-auto"
-            />
+            <div className="flex items-center gap-3">
+              <img
+                src={markReverse}
+                alt=""
+                width={940}
+                height={604}
+                loading="lazy"
+                className="h-10 w-auto"
+              />
+              <img
+                src={wordmark}
+                alt="WOODTEK"
+                width={1238}
+                height={224}
+                loading="lazy"
+                className="h-7 w-auto brightness-0 invert"
+              />
+            </div>
             <p className="mt-8 max-w-xs text-sm leading-relaxed text-ivory/55">
               {site.positioning}. Architectural products and interior surfaces for residential,
               hospitality and commercial projects.

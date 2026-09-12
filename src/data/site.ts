@@ -16,7 +16,6 @@ export const site = {
   ],
   nav: [
     { label: "Collections", to: "/collections" as const },
-    { label: "Materials", to: "/materials" as const },
     { label: "Projects", to: "/projects" as const },
     { label: "About", to: "/about" as const },
     { label: "Contact", to: "/contact" as const },
